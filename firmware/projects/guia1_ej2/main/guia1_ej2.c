@@ -29,6 +29,7 @@
 /*==================[internal functions declaration]=========================*/
 
 /*==================[external functions definition]==========================*/
+
 void app_main(void){
 	uint8_t teclas;
 	LedsInit();
@@ -38,13 +39,62 @@ void app_main(void){
     	switch(teclas){
     		case SWITCH_1:
     			LedToggle(LED_1);
+				vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
+
     		break;
     		case SWITCH_2:
     			LedToggle(LED_2);
-    		break;
+				vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
 
-    	}
-	    LedToggle(LED_3);
-		vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
+    		break;
+			case SWITCH_1 | SWITCH_2:
+				LedOff(LED_1 | LED_2);
+				LedToggle(LED_3);
+				vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
+
+			break;
+		}
+		
+	   
 	}
+
 }
+
+
+
+/*Acá juani quería que hagamos retención*/
+
+/*void app_main(void){
+    uint8_t teclas;
+    bool flag_switch1 = false;
+    bool flag_switch2 = false;
+
+    LedsInit();
+    SwitchesInit();
+
+    while(1) {
+        teclas = SwitchesRead();
+
+        if (teclas & SWITCH_1) {  // Usa bitwise AND para detectar si el botón está presionado
+            flag_switch1 = !flag_switch1;
+        }
+
+        if (teclas & SWITCH_2) {  
+            flag_switch2 = !flag_switch2;
+        }
+
+        // Lógica para controlar los LEDs
+        if (flag_switch1 && !flag_switch2) {
+            LedToggle(LED_2);
+        } else if (flag_switch2 && !flag_switch1) {
+            LedToggle(LED_1);
+        }
+
+	 	// Parpadeo del LED 3 (no depende de los switches)
+        LedToggle(LED_3);
+        
+        vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
+    }
+
+}
+*/
