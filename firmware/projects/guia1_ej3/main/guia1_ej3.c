@@ -2,7 +2,7 @@
  *
  * @section genDesc General Description
  *
- * This section describes how the program works.
+ * Función que reciba un puntero a una estructura LED.
  *
  * <a href="https://drive.google.com/...">Operation Example</a>
  *

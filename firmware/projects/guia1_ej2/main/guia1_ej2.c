@@ -2,7 +2,8 @@
  *
  * \section genDesc General Description
  *
- * This example makes LED_1 and LED_2 blink if SWITCH_1 or SWITCH_2 are pressed.
+ * Hace titilar los leds 1 y 2 al mantener presionada las teclas 1 y 2 correspondientemente. 
+ * También se debe poder hacer titilar el led 3 al presionar simultáneamente las teclas 1 y 2.
  *
  * @section changelog Changelog
  *
