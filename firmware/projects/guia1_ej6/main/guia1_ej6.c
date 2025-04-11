@@ -36,10 +36,22 @@
 #include <gpio_mcu.h>
 
 /*==================[macros and definitions]=================================*/
+
+/** @def N_BITS
+ * @brief Número de bits necesarios para representar un dígito BCD.
+ */
 #define N_BITS 4
+
+/** @def LCD_DIGITS
+ * @brief Número de dígitos del LCD.
+ */
 #define LCD_DIGITS 3 
 
 /*==================[internal data definition]===============================*/
+
+/**
+ * @brief Estructura de configuración de un pin GPIO.
+ */
 typedef struct {
     gpio_t pin;
     io_t dir;
@@ -47,12 +59,49 @@ typedef struct {
 
 /*==================[internal functions declaration]=========================*/
 
+/** @fn void GPIOInit(gpio_t pin, io_t dir)
+ * @brief Inicializa un pin GPIO con la dirección especificada.
+ * @param[in] pin Pin GPIO a inicializar.
+ * @param[in] dir Dirección del pin (entrada o salida).
+ * @return
+ */
+void GPIOInit(gpio_t pin, io_t dir);
+
+/** @fn void GPIOOn(gpio_t pin)
+ * @brief Enciende un pin GPIO.
+ * @param[in] pin Pin GPIO a encender.
+ * @return
+ */
+void GPIOOn(gpio_t pin);
+
+/** @fn void GPIOOff(gpio_t pin)
+ * @brief Apaga un pin GPIO.
+ * @param[in] pin Pin GPIO a apagar.
+ * @return
+ */
+void GPIOOff(gpio_t pin);
+
+/** @fn void GPIOstate(gpio_t pin, uint8_t state)
+ * @brief Cambia el estado de un pin GPIO.
+ * @param[in] pin Pin GPIO cuyo estado se cambiará.
+ * @param[in] state Estado deseado.
+ * @return
+ */
+void GPIOstate(gpio_t pin, uint8_t state);
+
 /*==================[external functions definition]==========================*/
+
+/** @fn int8_t  convertToBcdArray (uint32_t data, uint8_t digits, uint8_t * bcd_number)
+ * @brief Convierte un número decimal en un arreglo BCD.
+ * @param[in] data Número de entrada en formato decimal.
+ * @param[in] digits Cantidad de dígitos a convertir.
+ * @param[out] bcd_number Arreglo donde se almacena el resultado BCD.
+ * @return int8_t 0 si fue exitoso, -1 si hubo error.
+ */
 int8_t  convertToBcdArray (uint32_t data, uint8_t digits, uint8_t * bcd_number)
 {
-    // retorna -1 si hay error
 	if (digits > 10) {
-        return -1;  // inicialización en 0
+        return -1; 
     }
     // Inicializar el array de salida a 0
     for (uint8_t i = 0; i < digits; i++) {
@@ -71,6 +120,13 @@ int8_t  convertToBcdArray (uint32_t data, uint8_t digits, uint8_t * bcd_number)
     return 0;
 }
 
+
+/** @fn void BCDtoGPIO(uint8_t digit, gpioConfig_t *gpio_config) 
+ * @brief Muestra un dígito BCD en los pines GPIO configurados.
+ * @param[in] digit Dígito en formato BCD a mostrar.
+ * @param[in] gpio_config Vector de configuración de pines para cada bit BCD.
+ * @return
+ */
 void BCDtoGPIO(uint8_t digit, gpioConfig_t *gpio_config) {
     for (uint8_t i = 0; i < N_BITS; i++) {
         GPIOInit(gpio_config[i].pin, gpio_config[i].dir);
@@ -84,11 +140,16 @@ void BCDtoGPIO(uint8_t digit, gpioConfig_t *gpio_config) {
         }
 }
 
-// paso como parámetros el número de 32 bits, vector de estructuras con los pines de los bits BCD, vector de estructuras con los pines de los dígitos
+/** @fn void displayNumberOnLCD(uint32_t data, gpioConfig_t *data_gpio_config, gpioConfig_t *digit_gpio_config)
+ * @brief Muestra un número en el display LCD utilizando pines GPIO.
+ * @param[in] data Número a mostrar en el display (máximo 3 dígitos).
+ * @param[in] data_gpio_config Vector de configuración de los pines GPIO para los datos.
+ * @param[in] digit_gpio_config Vector de configuración de los pines GPIO para los dígitos.
+ * @return
+ */
 void displayNumberOnLCD(uint32_t data, gpioConfig_t *data_gpio_config, gpioConfig_t *digit_gpio_config) {
     uint8_t bcd_array[LCD_DIGITS];
     
-    // convertir el número a formato BCD (ej4)
     if (convertToBcdArray(data, LCD_DIGITS, bcd_array) != 0) {
         printf("Error: el número es demasiado grande para la cantidad de dígitos.\n");
         return;
@@ -101,18 +162,22 @@ void displayNumberOnLCD(uint32_t data, gpioConfig_t *data_gpio_config, gpioConfi
 
     // mostrar cada dígito en el display
     for (uint8_t i = 0; i < LCD_DIGITS; i++) {
-        // se apagan todos los dígitos
         for (uint8_t j = 0; j < LCD_DIGITS; j++) {
-            GPIOOff(digit_gpio_config[j].pin);
+            GPIOOff(digit_gpio_config[j].pin); // se apagan todos los dígitos
         }
 
         GPIOOn(digit_gpio_config[i].pin); //  pulso (on-off)
 
-		// mostrar el valor BCD del dígito (ej5)
         BCDtoGPIO(bcd_array[i], data_gpio_config);
     }
 }
 
+
+/** @fn void app_main(void) 
+ * @brief Función principal de la aplicación.
+ * Configura los pines GPIO y muestra un número en el display LCD.
+ * @return
+ */
 void app_main(void) {
     
     uint32_t number = 908;
@@ -127,9 +192,9 @@ void app_main(void) {
     
 	// vector de pines para activar los dígitos en el LCD
     gpioConfig_t digit_gpio_config[LCD_DIGITS] = {
-        {GPIO_19, 1}, // Dígito 1
-        {GPIO_18, 1}, // Dígito 2
-        {GPIO_9, 1}   // Dígito 3
+        {GPIO_19, 1}, // 1
+        {GPIO_18, 1}, // 2
+        {GPIO_9, 1}   // 3
     };
 
     displayNumberOnLCD(number, data_gpio_config, digit_gpio_config);

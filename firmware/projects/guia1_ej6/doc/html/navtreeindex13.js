@@ -1,5 +1,9 @@
 var NAVTREEINDEX13 =
 {
+"hc__sr04_8h.html":[3,0,0,0,1,0,3],
+"hc__sr04_8h_source.html":[3,0,0,0,1,0,3],
+"hx711_8c.html":[3,0,0,0,1,1,4],
+"hx711_8c.html#a11d946235bb0123edad7b8947df9ac8a":[3,0,0,0,1,1,4,19],
 "hx711_8c.html#a1ff6a94e6be9161d2d7e32a7a592ca0d":[3,0,0,0,1,1,4,16],
 "hx711_8c.html#a3ca2bc0ce568857412fd5f0b338d5aa6":[3,0,0,0,1,1,4,17],
 "hx711_8c.html#a4fbf16bf5edd9e2a5e589d1704c5c295":[3,0,0,0,1,1,4,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX13 =
 "projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#aa52ec6104623a66734cc5d5d28733bed":[3,0,0,1,0,0,0,0,0,1,0,7],
 "projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#aba35d0d200deaeb06aee95ca297acb28":[3,0,0,1,0,0,0,0,0,1,0,1],
 "projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#ad1280362da42492bbc11aa78cbf776ad":[3,0,0,1,0,0,0,0,0,1,0,10],
-"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#adbc5372f40838899018fadbc89bd588b":[3,0,0,1,0,0,0,0,0,1,0,12],
-"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#ae17f1ae0bf56cf631eadff4f73e96ff9":[3,0,0,1,0,0,0,0,0,1,0,6],
-"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#ae5510d82e4946f1656f4969911c54736":[3,0,0,1,0,0,0,0,0,1,0,0],
-"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#ae5e2d955d2884c65b7de2e1ad29a4f1d":[3,0,0,1,0,0,0,0,0,1,0,8],
-"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp_source.html":[3,0,0,1,0,0,0,0,0,1,0]
+"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#adbc5372f40838899018fadbc89bd588b":[3,0,0,1,0,0,0,0,0,1,0,12]
 };

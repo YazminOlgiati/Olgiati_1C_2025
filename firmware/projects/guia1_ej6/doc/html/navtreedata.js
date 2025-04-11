@@ -65,9 +65,9 @@ var NAVTREEINDEX =
 "group___i_l_i9341.html#ga77c432b28a66dde602c46e7fcba4cc08",
 "group___m_p_u6050.html#ga53ca9562881303b665299907726fb753",
 "group___m_p_u6050.html#gac74877bfb915f4a21000728965b87e34",
-"hx711_8c.html#a1ff6a94e6be9161d2d7e32a7a592ca0d",
-"psa__crypto__driver__wrappers__no__static_8c.html",
-"uart__mcu_8c_source.html"
+"hc__sr04_8h.html",
+"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#ae17f1ae0bf56cf631eadff4f73e96ff9",
+"uart__mcu_8c.html#a9ae4715bc5b76649b1f05ea98df67125"
 ];
 
 var SYNCONMSG = 'pulsar para deshabilitar sincronización';
