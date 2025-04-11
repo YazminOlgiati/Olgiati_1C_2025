@@ -2,16 +2,16 @@
  *
  * \section genDesc General Description
  *
- * Hace titilar los leds 1 y 2 al mantener presionada las teclas 1 y 2 correspondientemente. 
- * También se debe poder hacer titilar el led 3 al presionar simultáneamente las teclas 1 y 2.
+ * Este proyecto hace titilar los leds 1 y 2 al mantener presionada las teclas 1 y 2 correspondientemente. 
+ * También hace titilar el led 3 al presionar simultáneamente las teclas 1 y 2.
  *
  * @section changelog Changelog
  *
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
- * | 12/09/2023 | Document creation		                         |
+ * | 20/03/2025 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Yazmin Olgiati (yazmin.olgiati@ingenieria.uner.edu.ar)
  *
  */
 
@@ -63,7 +63,7 @@ void app_main(void){
 
 
 
-/*Acá juani quería que hagamos retención*/
+/*Retención*/
 
 /*void app_main(void){
     uint8_t teclas;

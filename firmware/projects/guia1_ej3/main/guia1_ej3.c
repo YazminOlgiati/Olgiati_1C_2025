@@ -2,7 +2,14 @@
  *
  * @section genDesc General Description
  *
- * Función que reciba un puntero a una estructura LED.
+ * Función que reciba un puntero a una estructura LED como la que se muestra a continuación: 
+ * struct leds
+ * {
+ *  uint8_t mode;       ON, OFF, TOGGLE
+ * uint8_t n_led;        indica el número de led a controlar
+ * uint8_t n_ciclos;   indica la cantidad de ciclos de ncendido/apagado
+ * uint16_t periodo;    indica el tiempo de cada ciclo
+ * } my_leds; 
  *
  * <a href="https://drive.google.com/...">Operation Example</a>
  *
@@ -17,9 +24,9 @@
  *
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
- * | 12/09/2023 | Document creation		                         |
+ * | 20/03/2025 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Yazmin Olgiati (yazmin.olgiati@ingenieria.uner.edu.ar)
  *
  */
 

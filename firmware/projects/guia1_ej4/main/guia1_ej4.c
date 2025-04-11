@@ -19,9 +19,9 @@
  *
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
- * | 12/09/2023 | Document creation		                         |
+ * | 27/03/2025 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Yazmin Olgiati (yazmin.olgiati@ingenieria.uner.edu.ar)
  *
  */
 
@@ -41,21 +41,21 @@
 
 int8_t  convertToBcdArray (uint32_t data, uint8_t digits, uint8_t * bcd_number)
 {
+    // retorna -1 si hay error
 	if (digits > 10) {
-        return -1;  // Error: el número de dígitos solicitado es mayor al máximo permitido.
-    }
-    // Inicializar el array de salida a 0
-    for (uint8_t i = 0; i < digits; i++) {
-        bcd_number[i] = 0;
+        return -1; 
     }
     for (uint8_t i = 0; i < digits; i++) {
-        bcd_number[digits - i - 1] = data % 10;  // Guardar el dígito menos significativo
-        data = data / 10;  // Eliminar el dígito menos significativo del dato
+        bcd_number[i] = 0; // inicialización en 0
+    }
+    for (uint8_t i = 0; i < digits; i++) {
+        bcd_number[digits - i - 1] = data % 10;  // dígito menos significativo
+        data = data / 10;  // se borra el dígito menos significativo
     }
     // Si después de convertir hay datos restantes en el número de entrada, 
     // significa que el número de dígitos era insuficiente
     if (data > 0) {
-        return -1;  // Error: se necesitarían más dígitos para representar completamente el dato en BCD.
+        return -1;
     }
 
     return 0;
