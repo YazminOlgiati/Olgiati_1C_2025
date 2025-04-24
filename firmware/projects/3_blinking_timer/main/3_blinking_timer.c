@@ -23,8 +23,8 @@
 #include "timer_mcu.h"
 #include "led.h"
 /*==================[macros and definitions]=================================*/
-#define CONFIG_BLINK_PERIOD_LED_1_US 1000000
-#define CONFIG_BLINK_PERIOD_LED_2_US 1300000
+#define CONFIG_BLINK_PERIOD_LED_1_US 1000000 //1s
+#define CONFIG_BLINK_PERIOD_LED_2_US 2000000 //2s
 /*==================[internal data definition]===============================*/
 TaskHandle_t led1_task_handle = NULL;
 TaskHandle_t led2_task_handle = NULL;
@@ -84,7 +84,7 @@ void app_main(void){
     };
     TimerInit(&timer_led_2);
     /* Creación de tareas */
-    xTaskCreate(&Led1Task, "LED_1", 512, NULL, 5, &led1_task_handle);
+    xTaskCreate(&Led1Task, "LED_1", 512, NULL, 5, &led1_task_handle); //&led1_task_handle puntero para pasar la notificación
     xTaskCreate(&Led2Task, "LED_2", 512, NULL, 5, &led2_task_handle);
     /* Inicialización del conteo de timers */
     TimerStart(timer_led_1.timer);

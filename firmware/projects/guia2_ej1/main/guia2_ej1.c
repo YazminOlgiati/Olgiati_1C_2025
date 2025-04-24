@@ -136,8 +136,9 @@ void app_main(void){
 }
 /*==================[end of file]============================================*/
 
-
+// drivers/devices/src/hc_sr04.c
 // #define US2CM		59		/* scale factor to conver pulse width to cm */
-// En la foto se colocó un obe¿jeto a 5cm del sensor,
+
+// En la foto se colocó un obejeto a 5cm del sensor,
 // con el osciloscopio se ve que el pulso es de aparoximandamente 350ms, 
-// este valo dividido 59 da como resultado 5,9cm (verificando la distancia medida).
+// este valor dividido 59 da como resultado 5,9cm (verificando la distancia medida).
