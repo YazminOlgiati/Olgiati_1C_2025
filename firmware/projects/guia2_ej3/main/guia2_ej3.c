@@ -1,4 +1,4 @@
-/*! @mainpage Template
+/*! @mainpage Medidor de distancia por ultrasonido con interrupciones y puerto serie
  *
  * @section genDesc General Description
  *
@@ -12,10 +12,13 @@
  *
  * @section hardConn Hardware Connection
  *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_2		|
- * | 	PIN_X	 	| 	GPIO_3		|
+ * | Periférico        | EDU-ESP   |
+ * |-------------------|-----------|
+ * | Sensor HC-SR04     | GPIO_3, GPIO_2 |
+ * | Display LCD        | EDU-ESP   |
+ * | Tecla 1 (activar)  | EDU-ESP   |
+ * | Tecla 2 (HOLD)     | EDU-ESP   |
+ * | Puerto serie       | UART_PC   |
  *
  *
  * @section changelog Changelog
@@ -39,16 +42,6 @@
 #include "switch.h"
 #include "timer_mcu.h"
 #include "uart_mcu.h"
-#include <stdio.h>
-#include <stdint.h>
-#include "hc_sr04.h"
-#include "lcditse0803.h"
-#include <led.h>
-#include <stdbool.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "switch.h"
-#include "timer_mcu.h"
 
 /*==================[macros and definitions]=================================*/
 /** 

@@ -1,4 +1,4 @@
-/*! @mainpage Template
+/*! @mainpage Medidor de Distancia por Ultrasonido con Interrupciones
  *
  * @section genDesc General Description
  *
@@ -11,9 +11,16 @@
  *
  * @section hardConn Hardware Connection
  *
- * |    Peripheral  |   ESP32   	|
+ * |   Periférico   |  Pin ESP32   	|
  * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
+ * | HC-SR04 Echo   | GPIO_X        |
+ * | HC-SR04 Trigger| GPIO_X        |
+ * | LED_1          | GPIO_X        |
+ * | LED_2          | GPIO_X        |
+ * | LED_3          | GPIO_X        |
+ * | LCD Display    | GPIO_X        |
+ * | TEC1 (SWITCH_1)| GPIO_X        |
+ * | TEC2 (SWITCH_2)| GPIO_X        |
  *
  *
  * @section changelog Changelog

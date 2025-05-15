@@ -16,9 +16,16 @@
  *
  * @section hardConn Hardware Connection
  *
- * |    Peripheral  |   ESP32   	|
+ * |   Periférico   |  Pin ESP32   	|
  * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
+ * | HC-SR04 Echo   | GPIO_X        |
+ * | HC-SR04 Trigger| GPIO_X        |
+ * | LED_1          | GPIO_X        |
+ * | LED_2          | GPIO_X        |
+ * | LED_3          | GPIO_X        |
+ * | LCD Display    | GPIO_X        |
+ * | TEC1           | GPIO_X        |
+ * | TEC2           | GPIO_X        |
  *
  *
  * @section changelog Changelog
@@ -45,22 +52,41 @@
 
 /*==================[macros and definitions]===================================*/
 
+/*! @brief Período de refresco para la lectura del sensor (en milisegundos). */
 #define CONFIG_PERIOD_1000 1000
+/*! @brief Período de refresco para el control de LEDs (en milisegundos). */
 #define CONFIG_PERIOD_100 100
+/*! @brief Período de refresco para la lectura de las teclas (en milisegundos). */
 #define CONFIG_PERIOD_10 10
 
+/*! @brief Variable auxiliar para activar o desactivar la medición y el control de LEDs. */
 bool encendido = true;
+/*! @brief Variable auxiliar para mantener el último valor medido y congelar el estado de los LEDs. */
 bool hold = false;
+/*! @brief Almacena la distancia medida por el sensor en centímetros. */
 float distancia = 0.00;
 
 /*==================[internal data definition]===========================*/
 
+/*! @brief Handle para la tarea de sensado de distancia. */
 TaskHandle_t medir_task_handle = NULL;
+
+/*! @brief Handle para la tarea de control de LEDs. */
 TaskHandle_t leds_task_handle = NULL;
+
+/*! @brief Handle para la tarea de lectura de teclas. */
 TaskHandle_t teclas_task_handle = NULL;
 
 /*==================[internal functions declaration]=======================*/
 
+/*!
+ * @brief Tarea que lee la distancia usando el sensor ultrasónico HC-SR04.
+ *
+ * Esta tarea lee periódicamente la distancia medida por el sensor y la almacena
+ * en la variable global `distancia`.
+ *
+ * @param[in] pvParameter Puntero a los parámetros de la tarea.
+ */
 static void MedirTask(void *pvParameter){
 	while(true){
 		//printf("Midiendo\n");
@@ -71,6 +97,14 @@ static void MedirTask(void *pvParameter){
 	}
 }
 
+/*!
+ * @brief Tarea que controla los LEDs según la distancia medida.
+ *
+ * Esta tarea enciende o apaga los LEDs dependiendo de la distancia almacenada
+ * en la variable global `distancia`. También actualiza el display LCD.
+ *
+ * @param[in] pvParameter Puntero a los parámetros de la tarea.
+ */
 static void LedsTask(void *pvParameter){
 	while(true){
 		//printf("Leds\n");
@@ -105,6 +139,14 @@ static void LedsTask(void *pvParameter){
 	}
 }
 
+/*!
+ * @brief Tarea que lee las teclas (TEC1 y TEC2).
+ *
+ * Esta tarea detecta el estado de las teclas y activa o desactiva la medición
+ * (`activar`), o mantiene el valor medido (`hold`), según sea necesario.
+ *
+ * @param[in] pvParameter Puntero a los parámetros de la tarea.
+ */
 static void TeclasTask(void *pvParameter){
 	uint8_t teclas;
 	while(true){
@@ -124,6 +166,12 @@ static void TeclasTask(void *pvParameter){
 
 /*==================[external functions definition]========================*/
 
+/*!
+ * @brief Función principal de la aplicación.
+ *
+ * Esta función inicializa los periféricos y crea las tareas para el sensado de distancia,
+ * control de LEDs y monitoreo de las teclas.
+ */
 void app_main(void){
 	LedsInit();
 	HcSr04Init(GPIO_3, GPIO_2);
