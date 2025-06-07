@@ -55,6 +55,9 @@
         },
         {
             "path": "projects/guia2_ej4"
+        },
+        {
+            "path": "projects/proyecto_3"
         }
     ],
     "settings": {
@@ -111,7 +114,10 @@
             "mpu6050.h": "c",
             "i2c_mcu.h": "c",
             "random": "c",
-            "stdio.h": "c"
+            "stdio.h": "c",
+            "esp_bt.h": "c",
+            "ios": "c",
+            "xiosbase": "c"
         },
     },
     "tasks": {
